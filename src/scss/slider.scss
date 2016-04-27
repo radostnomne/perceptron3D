@@ -1,0 +1,26 @@
+@import 'global';
+
+.slider {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 0;
+  box-shadow: none;
+  height: 16px;
+
+  .noUi-origin {
+    background-color: #B0BEC5;
+  }
+
+  .noUi-handle {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    left: -15px;
+    top: -8px;
+
+    &:before,
+    &:after {
+      content: none;
+    }
+  }
+}

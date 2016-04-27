@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Dmitry Kovalev <dimalolzet@gmail.com>",
+  "author": "PSU 12-IT-2 Brothers",
   "license": "ISC",
   "devDependencies": {
     "bower": "^1.7.9",

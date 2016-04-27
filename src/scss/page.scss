@@ -1,17 +1,18 @@
 @import 'global';
 
-.content {
+.page {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: move;
   flex-direction: column;
 }
 
-.container {
-  width: $cube-size;
-  height: $cube-size;
-  text-align: center;
-  perspective: 1000px;
+.content {
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: move;
 }

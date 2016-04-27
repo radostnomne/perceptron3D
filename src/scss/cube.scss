@@ -1,10 +1,20 @@
 @import 'global';
 
+.cube-wrap {
+  width: $cube-size;
+  height: $cube-size;
+  text-align: center;
+  perspective: 1000px;
+}
+
 .cube {
-  width: 200px;
-  height: 200px;
+  width: 100%;
+  height: 100%;
   position: absolute;
   transform-style: preserve-3d;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   &__edge {
     display: block;
@@ -28,32 +38,34 @@
     opacity: $opacity;
 
     &_front {
-      transform: rotateY(0deg) translateZ(100px);
+      transform: rotateY(0deg) translateZ($cube-size / 2);
       background-color: $color_red;
+      transform-style: preserve-3d;
     }
 
     &_back {
-      transform: rotateX(180deg) translateZ(100px);
+      transform: rotateX(180deg) translateZ($cube-size / 2);
       background-color: $color_orange;
     }
 
     &_right {
-      transform: rotateY(90deg) translateZ(100px);
+      transform: rotateY(90deg) translateZ($cube-size / 2);
       background-color: $color_green;
     }
 
     &_left {
-      transform: rotateY(-90deg) translateZ(100px);
+      transform: rotateY(-90deg) translateZ($cube-size / 2);
       background-color: $color_blue;
+      transform-style: preserve-3d;
     }
 
     &_top {
-      transform: rotateX(90deg) translateZ(100px);
+      transform: rotateX(90deg) translateZ($cube-size / 2);
       background-color: $color_yellow;
     }
 
     &_bottom {
-      transform: rotateX(-90deg) translateZ(100px);
+      transform: rotateX(-90deg) translateZ($cube-size / 2);
       background-color: $color_violet;
     }
   }
@@ -62,6 +74,7 @@
     background-color: black;
     box-shadow: none;
     opacity: .7;
+    transform: translateZ(-$cube-size / 2);
 
     &:before {
       content: '';
@@ -72,15 +85,7 @@
       top: 50%;
       background-color: white;
       opacity: .5;
-      transform: translateZ(100px);
-    }
-
-    &_x {
-      transform: rotateY(0deg);
-    }
-
-    &_y {
-      transform: rotateY(-90deg);
+      transform: translateZ($cube-size / 2);
     }
   }
 }
