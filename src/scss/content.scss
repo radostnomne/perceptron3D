@@ -1,0 +1,17 @@
+@import 'global';
+
+.content {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: move;
+  flex-direction: column;
+}
+
+.container {
+  width: $cube-size;
+  height: $cube-size;
+  text-align: center;
+  perspective: 1000px;
+}

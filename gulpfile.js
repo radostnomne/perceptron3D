@@ -17,6 +17,7 @@ gulp.task('build-html', function() {
 
 gulp.task('build-css', function() {
     return gulp.src([sourceDirectory + 'css/reset.min.css',
+                     bowerComponentsDirectory + 'nouislider/distribute/nouislider.min.css',
                      sourceDirectory + 'scss/*.scss'])
         .pipe($.plumber())
         .pipe($.sass())
@@ -31,13 +32,15 @@ gulp.task('build-css', function() {
 });
 
 gulp.task('build-js', function() {
-    gulp.src([bowerComponentsDirectory + 'jquery/dist/jquery.min.js'])
+    gulp.src(bowerComponentsDirectory + 'nouislider/distribute/nouislider.min.js')
         .pipe($.plumber())
-        .pipe($.concat('script.js'))
+        .pipe($.concat('components.js'))
+        .pipe($.uglify())
         .pipe(gulp.dest(buildDirectory + 'js'));
 
     return gulp.src([sourceDirectory + 'coffee/*.coffee'])
         .pipe($.plumber())
+        .pipe($.concat('script.coffee'))
         .pipe($.coffee())
         .pipe($.concat('script.js'))
         .pipe(gulp.dest(buildDirectory + 'js'))
