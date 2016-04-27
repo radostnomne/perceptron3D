@@ -1,0 +1,21 @@
+{
+  "name": "perceptron3d",
+  "version": "1.0",
+  "moduleType": [
+    "node"
+  ],
+  "authors": [
+    "PSU 12-IT-2 Brothers"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "nouislider": "^8.5.1"
+  }
+}
