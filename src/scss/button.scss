@@ -1,0 +1,66 @@
+@import 'global';
+
+$button-blue-color: #3F51B5;
+$button-orange-color: #EF6C00;
+
+.button {
+  border: none;
+  background-color: $button-blue-color;
+  color: white;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding: 5px 10px;
+  transition: all .3s ease;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  &:hover {
+    background-color: darken($button-blue-color, 10%);
+  }
+
+  &:active {
+    background-color: darken($button-blue-color, 20%);
+  }
+
+  &_set {
+    margin: 0;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    background-color: $button-orange-color;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 30px;
+
+    &:hover {
+      background-color: darken($button-orange-color, 10%);
+    }
+
+    &:active {
+      background-color: darken($button-orange-color, 20%);
+    }
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 3px;
+      top: 13px;
+      background-color: white;
+    }
+
+    &:before {
+      left: 5px;
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      right: 5px;
+      transform: rotate(-45deg);
+    }
+  }
+}

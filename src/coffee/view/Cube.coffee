@@ -13,10 +13,14 @@ class Cube
     top: document.getElementById 'cube-top'
     bottom: document.getElementById 'cube-bottom'
 
+
+
   constructor: (size) ->
     CUBE_SIZE = size
     do bindKeyPress
     do bindRotating
+
+
 
   bindKeyPress = ->
     content.onmousedown = (e) ->
@@ -26,6 +30,8 @@ class Cube
     content.onmouseup = ->
       keyPressed = false
 
+
+      
   bindRotating = ->
     content.onmousemove = (e) ->
       return false if not keyPressed
