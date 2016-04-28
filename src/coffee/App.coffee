@@ -1,10 +1,11 @@
 'use strict'
 
-initApp = ->
-  CUBE_SIZE = 200
+CUBE_SIZE = 200
+ARRAY_CUBE_SIZE = 20
 
-  new Cube CUBE_SIZE
-  new Configurator CUBE_SIZE
+initApp = ->
+  new Cube
+  new Perceptron new Configurator
 
 
 

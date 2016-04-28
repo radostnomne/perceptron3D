@@ -1,23 +1,25 @@
 class Configurator
-  CUBE_SIZE = 0
   
   separator =
     x: document.getElementById 'cube-separator-x'
     y: document.getElementById 'cube-separator-y'
     z: document.getElementById 'cube-separator-z'
+    position: {}
+    captionElement: document.getElementById 'separators-position'
 
   mark =
     element: document.getElementById 'mark'
+    captionElement: document.getElementById 'mark-position'
     transform: {}
 
-  edges = Array.prototype.slice.call document.getElementsByClassName('js--cube-edge')
-
-  cube = document.getElementById 'cube'
+  ghosts = Array.prototype.slice.call(document.getElementsByClassName 'ghost')
+  edges = Array.prototype.slice.call document.getElementsByClassName 'js--cube-edge'
+  legendMarks = Array.prototype.slice.call(document.getElementsByClassName 'legend__mark')
+  opacity = .9
 
   
   
-  constructor: (size) ->
-    CUBE_SIZE = size
+  constructor: ->
     do initSeparatorSliders
     do initMarkSliders
     do bindOpacitySlider
@@ -27,6 +29,20 @@ class Configurator
 
   getMarkPosition: ->
     mark.transform
+
+
+
+  setGhostPosition: (index) ->
+    ghosts[index].style.transform = "translate3d(#{mark.transform.x}px, #{mark.transform.y}px, -#{mark.transform.z}px)"
+    ghosts[index].style.display = 'block'
+    legendMarks[index].style.display = 'block'
+
+
+    
+  hideGhosts: ->
+    for i in [0...8]
+      ghosts[i].style.display = 'none'
+      legendMarks[i].style.display = 'none'
 
 
 
@@ -43,7 +59,10 @@ class Configurator
         value = parseInt values[0], 10
         axis = this.target.getAttribute 'data-axis'
 
+        separator.position[axis] = value
         separator[axis].style.transform = "translateZ(#{value}px)"
+
+        separator.captionElement.textContent = "X: #{separator.position.x}, Y: #{separator.position.y}, Z: #{separator.position.z}"
 
           
           
@@ -66,6 +85,8 @@ class Configurator
         mark.transform[axis] = parseInt "#{value ? 0}", 10
         mark.element.style.transform = "translate3d(#{mark.transform.x}px, #{mark.transform.y}px, -#{mark.transform.z}px)"
 
+        mark.captionElement.textContent = "X: #{mark.transform.x}, Y: #{mark.transform.y}, Z: #{mark.transform.z}"
+
 
 
   bindOpacitySlider = ->
@@ -80,21 +101,22 @@ class Configurator
 
     slider.noUiSlider.on 'update', (values) ->
       value = parseInt(values[0], 10) / 10
+      opacity = value
       setEdgesOpacity value
-      cube.setAttribute 'data-opacity', value
 
 
 
   bindChangeEdgesOpacity = ->
     Array.prototype.slice.call(document.getElementsByClassName 'js--edge-control-slider').forEach (slider) ->
       slider.noUiSlider.on 'start', ->
-        if parseFloat(cube.getAttribute 'data-opacity') > .6
+        if opacity > .6
           setEdgesOpacity .6
 
       slider.noUiSlider.on 'end', ->
-        opacity = parseFloat(cube.getAttribute 'data-opacity')
         if opacity > .6
           setEdgesOpacity opacity
+
+
 
   setEdgesOpacity = (opacity) ->
     edges.forEach (edge) ->

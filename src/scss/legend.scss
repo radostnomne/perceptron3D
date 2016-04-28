@@ -1,0 +1,33 @@
+@import 'global';
+
+.legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px 0;
+
+  &__mark {
+    margin: 3px 15px;
+    display: none;
+  }
+
+  &__circle {
+    display: inline-block;
+    vertical-align: middle;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+    @for $j from 1 through 8 {
+
+      &_#{$j} {
+        background-color: nth($colors, $j);
+      }
+    }
+  }
+
+  &__name {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}

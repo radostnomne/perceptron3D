@@ -1,9 +1,16 @@
+mixin sphere(attrs, index)
+    .sphere&attributes(attrs)(class= index ? 'sphere_#{index}' : '')
+        - for(var i = 0; i < 13; i++)
+            span.sphere__circle
+
 .content#content
     .cube-wrap
-        .cube#cube
+        .cube
             .cube__edge.cube__edge_front.js--cube-edge#cube-front front
                 .cube__edge.cube__separator.cube__separator_z#cube-separator-z
-                include mark
+                +sphere({ id: 'mark' })
+                - for(var i = 1; i <= 8; i++)
+                    +sphere({ class: 'ghost' }, i)
 
             .cube__edge.cube__edge_back.js--cube-edge#cube-back back
 

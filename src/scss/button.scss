@@ -63,4 +63,15 @@ $button-orange-color: #EF6C00;
       transform: rotate(-45deg);
     }
   }
+
+  &_progress {
+    cursor: default;
+    pointer-events: none;
+    background-color: #808080;
+
+    &:hover,
+    &:active {
+      background-color: #808080;
+    }
+  }
 }
