@@ -1,4 +1,4 @@
-const NUM_OF_CLICKS = 5,
+const COUNTER = 5,
 	SIDE_X = 20,
 	SIDE_Y = 20,
 	SIDE_Z = 20,
@@ -45,7 +45,7 @@ var calibrate = function(x, y, z) {
 	if (calibration) {
         recalculation(blocks[blockIterator], x, y, z);
         clickCounter++;
-        if (clickCounter == NUM_OF_CLICKS) {
+        if (clickCounter == COUNTER) {
             clickCounter = 0;
             blockIterator++;
             if (blockIterator < blocks.length) {

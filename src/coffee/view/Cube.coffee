@@ -1,7 +1,6 @@
 class Cube
   keyPressed = false
   separator = undefined
-  CUBE_SIZE = 0
 
   content = document.getElementById 'content'
 
@@ -15,8 +14,7 @@ class Cube
 
 
 
-  constructor: (size) ->
-    CUBE_SIZE = size
+  constructor: ->
     do bindKeyPress
     do bindRotating
 
