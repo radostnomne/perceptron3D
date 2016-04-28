@@ -38,7 +38,7 @@ gulp.task('build-js', function() {
         .pipe($.uglify())
         .pipe(gulp.dest(buildDirectory + 'js'));
 
-    return gulp.src([sourceDirectory + 'coffee/*.coffee'])
+    return gulp.src([sourceDirectory + 'coffee/**/*.coffee'])
         .pipe($.plumber())
         .pipe($.concat('script.coffee'))
         .pipe($.coffee())

@@ -1,10 +1,29 @@
 .settings
-    .settings__item
-        p.settings__title Separators position
-        p Separator X
-        .slider.separator-slider(data-separator-target='x')
-        p Separator Y
-        .slider.separator-slider(data-separator-target='y')
+    .settings__content
+        .settings__item
+            p.settings__title Separators position
+            .settings__body
+                p Separator X
+                .slider.slider_separator.js--edge-control-slider(data-axis='x')
+                p Separator Y
+                .slider.slider_separator.js--edge-control-slider(data-axis='y')
+                p Separator Z
+                .slider.slider_separator.js--edge-control-slider(data-axis='z')
 
-    .settings__item
-        p.settings__title Mark position
+        .settings__item
+            p.settings__title Control
+            .settings__body
+                p Edges opacity
+                .slider#opacity-slider
+
+                button.button#calibration(type='button') Start calibration
+
+        .settings__item
+            p.settings__title Mark position
+            .settings__body
+                .sliders-wrap
+                    .slider.slider_mark.slider_mark_x.js--edge-control-slider(data-axis='x')
+                    .slider.slider_mark.slider_mark_y.js--edge-control-slider(data-axis='y')
+                    .slider.slider_mark.slider_mark_z.js--edge-control-slider(data-axis='z')
+
+                button.button.button_set#set(type='button')
