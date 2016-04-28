@@ -1,0 +1,11 @@
+@import 'global';
+
+.progress {
+  position: absolute;
+  height: 5px;
+  width: 0;
+  top: 0;
+  left: 0;
+  background-color: $color_green;
+  transition: width .3s ease;
+}

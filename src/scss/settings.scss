@@ -4,6 +4,7 @@
   width: 100%;
   background-color: #e4e4e4;
   box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, .3);
+  position: relative;
 
   &__content {
     max-width: 1200px;
@@ -43,5 +44,32 @@
     color: $color_red;
     font-size: 11px;
     margin-top: -10px;
+  }
+
+  &__info {
+    padding-top: 10px;
+    padding-bottom: 15px;
+    text-align: center;
+    color: $color_orange;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateY(-100%);
+    width: 100%;
+    text-transform: uppercase;
+
+    &:empty {
+      display: none;
+    }
+
+    &-caption {
+      font-size: 11px;
+      color: #555555;
+      margin-top: 5px;
+
+      &:empty {
+        display: none;
+      }
+    }
   }
 }

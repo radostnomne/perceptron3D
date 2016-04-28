@@ -1,4 +1,5 @@
 class Cube
+  
   keyPressed = false
   separator = undefined
 

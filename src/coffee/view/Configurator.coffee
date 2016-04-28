@@ -1,4 +1,5 @@
 class Configurator
+  
   separator =
     x: document.getElementById 'cube-separator-x'
     y: document.getElementById 'cube-separator-y'
@@ -12,7 +13,6 @@ class Configurator
     transform: {}
 
   edges = Array.prototype.slice.call document.getElementsByClassName('js--cube-edge')
-
   opacity = .9
 
   
