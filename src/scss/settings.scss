@@ -52,6 +52,7 @@
     text-align: center;
     color: $color_orange;
     position: absolute;
+    pointer-events: none;
     left: 0;
     top: 0;
     transform: translateY(-100%);

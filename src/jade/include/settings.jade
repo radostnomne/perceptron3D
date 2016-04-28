@@ -1,4 +1,8 @@
 .settings
+    .settings__info
+        p#info
+        p.settings__info-caption#current-progress
+
     .progress#progress
 
     .legend#legend
@@ -6,10 +10,6 @@
             .legend__mark
                 span.legend__circle(class='legend__circle_#{i}')
                 span.legend__name= i
-
-    .settings__info
-        p#info
-        p.settings__info-caption#current-progress
 
     .settings__content
         .settings__item
