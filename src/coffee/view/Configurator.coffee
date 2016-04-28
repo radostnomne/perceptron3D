@@ -12,7 +12,9 @@ class Configurator
     captionElement: document.getElementById 'mark-position'
     transform: {}
 
-  edges = Array.prototype.slice.call document.getElementsByClassName('js--cube-edge')
+  ghosts = Array.prototype.slice.call(document.getElementsByClassName 'ghost')
+  edges = Array.prototype.slice.call document.getElementsByClassName 'js--cube-edge'
+  legendMarks = Array.prototype.slice.call(document.getElementsByClassName 'legend__mark')
   opacity = .9
 
   
@@ -27,6 +29,20 @@ class Configurator
 
   getMarkPosition: ->
     mark.transform
+
+
+
+  setGhostPosition: (index) ->
+    ghosts[index].style.transform = "translate3d(#{mark.transform.x}px, #{mark.transform.y}px, -#{mark.transform.z}px)"
+    ghosts[index].style.display = 'block'
+    legendMarks[index].style.display = 'block'
+
+
+    
+  hideGhosts: ->
+    for i in [0...8]
+      ghosts[i].style.display = 'none'
+      legendMarks[i].style.display = 'none'
 
 
 

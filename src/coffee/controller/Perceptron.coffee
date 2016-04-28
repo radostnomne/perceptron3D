@@ -38,7 +38,9 @@ class Perceptron
 
     calibration = true
     calibrated = false
-    progressElement.style.width = progressCounter = 1
+    progressCounter = 1
+    progressElement.style.width = 0
+    do configurator.hideGhosts
 
     showMessage "Select block < #{blocks[blockIterator].name} >"
     showMessage "Finished: 0 of #{COUNTER}, Total: 0 of #{(blocks.length) * COUNTER}", true
@@ -75,6 +77,8 @@ class Perceptron
 
         if blockIterator == blocks.length
           do stopCalibration
+
+        configurator.setGhostPosition(blockIterator - 1)
 
 
 

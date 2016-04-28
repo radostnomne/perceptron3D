@@ -2,13 +2,14 @@
 
 $size: 5px;
 
-.mark {
+.sphere {
   perspective: 1000px;
   transform-style: preserve-3d;
   transform-origin: 50% 50% 50%;
   position: absolute;
   top: 0;
   left: 0;
+  display: none;
 
   &__circle {
     height: $size;
@@ -17,7 +18,7 @@ $size: 5px;
     position: absolute;
     transform-origin: 50%;
     transform-style: preserve-3d;
-    background: white;
+    background-color: white;
 
     $rotation: 0;
 
@@ -32,5 +33,21 @@ $size: 5px;
         $rotation: $rotation + 30;
       }
     }
+  }
+
+  @for $j from 1 through 8 {
+    &_#{$j} {
+      .sphere__circle {
+        background-color: nth($colors, $j);
+      }
+    }
+  }
+}
+
+#mark {
+  display: block !important;
+
+  .sphere__circle {
+    background-color: white !important;
   }
 }

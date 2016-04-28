@@ -1,6 +1,12 @@
 .settings
     .progress#progress
 
+    .legend#legend
+        - for(var i = 1; i <= 8; i++)
+            .legend__mark
+                span.legend__circle(class='legend__circle_#{i}')
+                span.legend__name= i
+
     .settings__info
         p#info
         p.settings__info-caption#current-progress
