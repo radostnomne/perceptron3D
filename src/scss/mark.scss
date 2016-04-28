@@ -1,0 +1,36 @@
+@import 'global';
+
+$size: 5px;
+
+.mark {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50% 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  &__circle {
+    height: $size;
+    width: $size;
+    border-radius: 50%;
+    position: absolute;
+    transform-origin: 50%;
+    transform-style: preserve-3d;
+    background: white;
+
+    $rotation: 0;
+
+    @for $i from 1 through 13 {
+      &:nth-child(#{$i}) {
+
+        @if ($i == 8) {
+          $rotation: 30;
+        }
+
+        transform: rotateX(#{$rotation}deg);
+        $rotation: $rotation + 30;
+      }
+    }
+  }
+}

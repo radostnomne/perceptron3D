@@ -23,4 +23,41 @@
       content: none;
     }
   }
+
+
+  &_mark {
+    $mark-slider-size: 70px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $mark-slider-size;
+    height: 8px;
+
+    .noUi-handle {
+      left: -10px;
+      width: 20px;
+      height: 20px;
+    }
+
+    &_x {
+      top: $mark-slider-size + 15px;
+    }
+
+    &_y {
+      left: $mark-slider-size + 10px;
+      width: 8px;
+      height: $mark-slider-size;
+
+      .noUi-handle {
+        left: -7px;
+      }
+    }
+
+    &_z {
+      top: $mark-slider-size + 43px;
+      left: $mark-slider-size + 10px;
+      transform: rotate(45deg);
+    }
+  }
 }

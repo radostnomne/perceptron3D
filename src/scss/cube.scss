@@ -36,6 +36,7 @@
     -webkit-user-select: none;
     user-select: none;
     opacity: $opacity;
+    transition: opacity .3s ease;
 
     &_front {
       transform: rotateY(0deg) translateZ($cube-size / 2);

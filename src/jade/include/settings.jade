@@ -1,10 +1,15 @@
 .settings
     .settings__item
         p.settings__title Separators position
-        p Separator X
-        .slider.separator-slider(data-separator-target='x')
-        p Separator Y
-        .slider.separator-slider(data-separator-target='y')
+        .settings__sliders
+            p Separator X
+            .slider.separator-slider(data-axis='x')
+            p Separator Y
+            .slider.separator-slider(data-axis='y')
 
     .settings__item
         p.settings__title Mark position
+        .settings__sliders
+            .slider.slider_mark.slider_mark_x(data-axis='x')
+            .slider.slider_mark.slider_mark_y(data-axis='y')
+            .slider.slider_mark.slider_mark_z(data-axis='z')
