@@ -54,8 +54,8 @@ class Cube
       switch e.keyCode
         when direction.up then offset.y += arrowsRotateOffset
         when direction.down then offset.y -= arrowsRotateOffset
-        when direction.left then offset.x += arrowsRotateOffset
-        when direction.right then offset.x -= arrowsRotateOffset
+        when direction.left then offset.x -= arrowsRotateOffset
+        when direction.right then offset.x += arrowsRotateOffset
 
       do rotateCube
 
