@@ -74,6 +74,7 @@
     box-shadow: none;
     opacity: .7;
     transform: translateZ(-$cube-size / 2);
+    transition: opacity .3s ease;
   }
 
   &__name {

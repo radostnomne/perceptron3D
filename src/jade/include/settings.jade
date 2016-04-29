@@ -24,10 +24,14 @@
                 .slider.slider_separator.js--edge-control-slider(data-axis='z')
 
         .settings__item
-            p.settings__title Control
+            p.settings__title Opacity and control
+            p.settings__caption#opacity-value
             .settings__body
                 p Edges opacity
-                .slider#opacity-slider
+                .slider.js--opacity-slider(data-target='edges')
+
+                p Separators opacity
+                .slider.js--opacity-slider(data-target='separators')
 
                 button.button#calibration(type='button') Start calibration
 
