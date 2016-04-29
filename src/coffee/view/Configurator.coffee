@@ -15,7 +15,10 @@ class Configurator
   ghosts = Array.prototype.slice.call(document.getElementsByClassName 'ghost')
   edges = Array.prototype.slice.call document.getElementsByClassName 'js--cube-edge'
   legendMarks = Array.prototype.slice.call(document.getElementsByClassName 'legend__mark')
-  opacity = .9
+  opacityValueElement = document.getElementById 'opacity-value'
+
+  separatorsOpacity = .7
+  edgesOpacity = 1
 
   
   
@@ -90,35 +93,46 @@ class Configurator
 
 
   bindOpacitySlider = ->
-    slider = document.getElementById 'opacity-slider'
+    Array.prototype.slice.call(document.getElementsByClassName 'js--opacity-slider').forEach (slider) ->
+      currentSliderTarget = slider.getAttribute 'data-target'
 
-    noUiSlider.create slider,
-      start: 9
-      step: 1
-      range:
-        min: 0,
-        max: 9
+      noUiSlider.create slider,
+        start: if currentSliderTarget is 'separators' then 7 else 9
+        step: 1
+        range:
+          min: 0,
+          max: 10
 
-    slider.noUiSlider.on 'update', (values) ->
-      value = parseInt(values[0], 10) / 10
-      opacity = value
-      setEdgesOpacity value
+      slider.noUiSlider.on 'update', (values) ->
+        value = parseInt(values[0], 10) / 10
+        target = this.target.getAttribute 'data-target'
+
+        if target is 'separators'
+          separatorsOpacity = value
+          separator.x.style.opacity = separatorsOpacity
+          separator.y.style.opacity = separatorsOpacity
+          separator.z.style.opacity = separatorsOpacity
+        else
+          edgesOpacity = value
+          setEdgesOpacity edgesOpacity
+
+        opacityValueElement.textContent = "Edges: #{edgesOpacity}, Separators: #{separatorsOpacity}"
 
 
 
   bindChangeEdgesOpacity = ->
     Array.prototype.slice.call(document.getElementsByClassName 'js--edge-control-slider').forEach (slider) ->
       slider.noUiSlider.on 'start', ->
-        if opacity > .6
+        if edgesOpacity > .6
           setEdgesOpacity .6
 
       slider.noUiSlider.on 'end', ->
-        if opacity > .6
-          setEdgesOpacity opacity
+        if edgesOpacity > .6
+          setEdgesOpacity edgesOpacity
 
 
 
   setEdgesOpacity = (opacity) ->
     edges.forEach (edge) ->
-      color = getComputedStyle(edge).backgroundColor.replace('rgba(', '').replace(')', '').split(', ')
+      color = getComputedStyle(edge).backgroundColor.replace('rgba(', '').replace('rgb(', '').replace(')', '').split(', ')
       edge.style.backgroundColor = "rgba(#{color[0]}, #{color[1]}, #{color[2]}, #{opacity})"
